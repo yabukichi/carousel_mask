@@ -1,0 +1,128 @@
+$accentcolor: #76FF03;
+$maincolor: #FF1744;
+$basecolor:#FFFFFF;
+
+body {
+  padding: 0;
+  background-color: $basecolor;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+  color: #000000;
+  min-width: 1200px;
+}
+.carousel-item {
+  padding: 1rem 3rem 0;
+  background: none;
+  height: auto;
+}
+
+
+  .show_hero{
+    height: auto; //.show_imageの高さに合わせる。
+    width: 100%;
+    background-color: black; //背景を黒に。
+    position: relative;
+    transition: 1.0s;
+  }
+  .show_image {
+    background-size: cover; //背景領域を完全に覆う最小サイズになるように背景画像を拡大縮小する。[object-fit:cover]の背景版のような感じ。
+    background-position: 50% 50%;  //背景領域の中心に画像を配置する。上の[background-size: cover;]との組み合わせで[object-fit:cover]を背景画像で再現。
+    background-repeat: no-repeat;
+    height: 495px;
+    width: 100%;
+    transition: 1.0s;
+  }
+  .hero_content {
+    opacity: 0; //show_imageにhoverされた時に透明度を上げながら表示するために使用。初期値を0にして非表示にしている。
+    width: 50%;
+    text-align: left;
+    position: absolute; //show_imageの上にコンテンツを配置するために使用。
+    color: white;
+    top: 9rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transition: 1.0s;
+  }
+  .hero_description { //画像下に説明文を表示するために使用。
+    position: absolute;
+    width: 100%;
+    color: #3D5AFE;
+    top: 28rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $accentcolor;
+    transition: 1.0s;
+    opacity: 0.7;
+    font-weight: bold;
+    .element{
+      margin: auto 1rem;
+    }
+    p{
+      margin:0;
+    }
+  }
+  .show_hero:hover {
+    > .show_image{
+      opacity: 0.2; //画像の透明度を0.2にすることで、.show_heroの背景の黒が見えてきて黒いマスクがかかったように見える。
+      > .hero_description{
+        opacity: 0;
+      }
+    }   
+    > .hero_content{
+      opacity: 1; //.hero_contentを表示する。
+    }
+  }
+
+@media (max-width: 992px){
+  .carousel-item {
+    padding:0;
+    background: none;
+    height: auto;
+  }
+    .carousel {
+      margin-bottom: 2rem;
+    }
+    .show_image{
+      height:300px;
+    }
+    .show_hero{
+      height:300px;
+    }
+    .hero_content{
+      top: 4rem;
+      p{
+        font-size: 0.7rem;
+      }
+    }
+    .hero_description{
+      top: 16.5rem;
+      p{
+        font-size: 0.7rem;
+      }
+    }
+}
+
+@media (max-width:480px){
+  
+    h1{
+      font-size: 1.5rem;
+    }
+    .show_image{
+      height:200px;
+    }
+    .show_hero{
+      height:200px;
+    }
+    .hero_content{
+      top: 2rem;
+      width: 60%;
+    }
+    .hero_description{
+      top: 10.5rem;
+      p{
+        font-size: 0.5rem;
+      }
+    }
+}
